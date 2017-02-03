@@ -1,18 +1,9 @@
 <?php
-class personas_model{
-    private $db;
-    private $personas;
+//Llamada al modelo
+require_once("models/personas_model.php");
+$per=new personas_model();
+$datos=$per->get_personas();
  
-    public function __construct(){
-        $this->db=Conectar::conexion();
-        $this->personas=array();
-    }
-    public function get_personas(){
-        $consulta=$this->db->query("select * from personas;");
-        while($filas=$consulta->fetch_assoc()){
-            $this->personas[]=$filas;
-        }
-        return $this->personas;
-    }
-}
+//Llamada a la vista
+require_once("views/personas_view.php");
 ?>
